@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncie seu Brechó - Loop</title>
+    <!-- Importando a fonte Satoshi -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <!-- Folha de estilos externa -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-container-main {
+            max-width: 650px;
+            margin: 40px auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .container {
+            background-color: #FFFFFF;
+            width: 100%;
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(110, 54, 35, 0.05);
+            border: 1px solid #EAE6DF;
+        }
+
+        h1.form-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #6E3623;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        p.subtitle {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 30px;
+            color: #A37566;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 30px 0 15px 0;
+            border-bottom: 1px solid rgba(140, 61, 43, 0.2);
+            padding-bottom: 8px;
+            color: #8C3D2B;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #8C3D2B;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="time"],
+        input[type="number"],
+        select,
+        textarea {
+            font-family: 'Satoshi', sans-serif;
+            padding: 12px 16px;
+            border: 2px solid #EAE6DF;
+            border-radius: 8px;
+            background-color: #FBFBFA;
+            color: #6E3623;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #8C3D2B;
+            background-color: #FFFFFF;
+        }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 14px;
+            color: #6E3623;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            accent-color: #8C3D2B;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Grade de seleção para os horários */
+        .horarios-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .day-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6E3623;
+        }
+
+        .horarios-inputs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .horarios-inputs input[type="time"] {
+            padding: 8px 12px;
+            width: 100%;
+        }
+
+        .horarios-inputs span {
+            font-size: 12px;
+            color: #A37566;
+        }
+
+        /* Customização do botão de upload */
+        .file-dropzone {
+            border: 2px dashed #8C3D2B;
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            background-color: rgba(140, 61, 43, 0.02);
+            font-size: 14px;
+            font-weight: 600;
+            color: #8C3D2B;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .file-dropzone:hover {
+            background-color: rgba(140, 61, 43, 0.05);
+        }
+
+        .file-dropzone input[type="file"] {
+            display: none;
+        }
+
+        .file-preview {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .file-preview img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #EAE6DF;
+        }
+
+        /* Botão submit */
+        button[type="submit"] {
+            font-family: 'Satoshi', sans-serif;
+            background-color: #8C3D2B;
+            color: #FFFFFF;
+            border: none;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 30px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #6E3623;
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.99);
+        }
+
+        /* --- RESPONSIVIDADE MOBILE --- */
+        @media (max-width: 600px) {
+            .form-container-main {
+                margin: 20px auto 40px auto;
+                padding: 0 10px;
+            }
+            .container {
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+            h1.form-title {
+                font-size: 22px;
+            }
+            .horarios-grid {
+                grid-template-columns: 1fr;
+                gap: 5px;
+                margin-bottom: 15px;
+            }
+            .horarios-inputs {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo" id="logo-btn"><img src="assets/logo_white.png" alt="Loop" class="logo-img"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="busca.html">Busca</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="anuncie.html" class="active">Seu Brechó</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-container-main">
+        <div class="container">
+            <h1 class="form-title">Anuncie seu Brechó</h1>
+            <p class="subtitle">Preencha os dados abaixo para destacar seu espaço no nosso app.</p>
+
+            <form id="cadastro-brecho-form">
+                
+                <!-- SEÇÃO 1 -->
+                <div class="section-title">1. Informações Básicas</div>
+                
+                <div class="form-group">
+                    <label for="nome-brecho">Nome do Brechó</label>
+                    <input type="text" id="nome-brecho" name="nome-brecho" placeholder="Ex: Brechó Vintage Chic" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-estabelecimento">Tipo de estabelecimento</label>
+                    <select id="tipo-estabelecimento" name="tipo-estabelecimento" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="fisica">Loja Física</option>
+                        <option value="online">Loja Apenas Online (Instagram/Site)</option>
+                        <option value="hibrido">Híbrido (Física e Online)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço Completo (Se houver loja física)</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro e cidade">
+                </div>
+
+                <!-- Horário de Funcionamento Selecionável -->
+                <div class="form-group">
+                    <label>Horário de Funcionamento</label>
+                    
+                    <!-- Segunda a Sexta -->
+                    <div class="horarios-grid">
+                        <span class="day-label">Segunda a Sexta:</span>
+                        <div class="horarios-inputs">
+                            <input type="time" id="seg-sex-inicio" name="seg_sex_inicio" value="09:00">
+                            <span>até</span>
+                            <input type="time" id="seg-sex-fim" name="seg_sex_fim" value="18:00">
+                        </div>
+                    </div>
+
+                    <!-- Sábado -->
+                    <div class="horarios-grid">
+                        <span class="day-label">Sábados:</span>
+                        <div class="horarios-inputs">
+                            <input type="time" id="sab-inicio" name="sab_inicio" value="09:00">
+                            <span>até</span>
+                            <input type="time" id="sab-fim" name="sab_fim" value="13:00">
+                        </div>
+                    </div>
+
+                    <!-- Domingo/Feriados -->
+                    <div class="horarios-grid">
+                        <span class="day-label">Domingos:</span>
+                        <select id="domingo-status" name="domingo_status">
+                            <option value="fechado">Fechado</option>
+                            <option value="aberto">Aberto</option>
+                        </select>
+                    </div>
+
+                    <!-- Horário do Domingo (Oculto/Visível dinamicamente) -->
+                    <div class="horarios-grid" id="domingo-horarios-container" style="display: none;">
+                        <span class="day-label">Horário de Domingo:</span>
+                        <div class="horarios-inputs">
+                            <input type="time" id="dom-inicio" name="dom_inicio" value="10:00">
+                            <span>até</span>
+                            <input type="time" id="dom-fim" name="dom_fim" value="14:00">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEÇÃO 2 -->
+                <div class="section-title">2. Nicho e Estilo</div>
+
+                <div class="form-group">
+                    <label for="estilo-principal">Qual estilo define melhor a sua curadoria principal? (Necessário para o filtro)</label>
+                    <select id="estilo-principal" name="estilo_principal" required>
+                        <option value="" disabled selected>Selecione o estilo principal</option>
+                        <option value="vintage">Vintage / Retrô (Anos 70, 80, 90)</option>
+                        <option value="streetwear">Streetwear / Casual urbano</option>
+                        <option value="casual">Casual clássico</option>
+                        <option value="grife">Marcas de Luxo / Grifes</option>
+                        <option value="infantil">Infantil / Kids</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Qual é a faixa de preço média das peças?</label>
+                    <div class="radio-group">
+                        <label class="option-label"><input type="radio" name="preco" value="economico" required> $ (Super econômico - até R$ 30)</label>
+                        <label class="option-label"><input type="radio" name="preco" value="justo"> $$ (Preço justo - R$ 30 a R$ 100)</label>
+                        <label class="option-label"><input type="radio" name="preco" value="premium"> $$$ (Premium / Luxo - acima de R$ 100)</label>
+                    </div>
+                </div>
+
+                <!-- SEÇÃO 3 -->
+                <div class="section-title">3. Parâmetros de Curation & Busca</div>
+
+                <div class="form-group">
+                    <label for="gestao">Tipo de Gestão (Necessário para o filtro)</label>
+                    <select id="gestao" name="gestao" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="privado">Privado / Comercial</option>
+                        <option value="beneficente">Beneficente (ONG / Igreja / Projeto Social)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Vocês aceitam desapegos de clientes?</label>
+                    <div class="radio-group">
+                        <label class="option-label"><input type="radio" name="desapego" value="nao" required> Não, trabalhamos apenas com curadoria própria.</label>
+                        <label class="option-label"><input type="radio" name="desapego" value="lote"> Sim, compramos lotes fechados.</label>
+                        <label class="option-label"><input type="radio" name="desapego" value="consignacao"> Sim, trabalhamos por consignação.</label>
+                        <label class="option-label"><input type="radio" name="desapego" value="troca"> Sim, aceitamos trocas por créditos na loja.</label>
+                    </div>
+                </div>
+
+                <!-- SEÇÃO 4 -->
+                <div class="section-title">4. Contato e Identidade</div>
+
+                <div class="form-group">
+                    <label for="instagram">Link do Instagram ou Site</label>
+                    <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/seu_brecho">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone de contato público (WhatsApp)</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="Ex: (55) 99999-9999" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Foto de destaque do seu brechó (Máx: 1 foto principal)</label>
+                    <label class="file-dropzone">
+                        <span id="upload-status-text">Clique aqui para selecionar a foto 📸</span>
+                        <input type="file" id="foto-brecho" name="foto" accept="image/*">
+                    </label>
+                    <div class="file-preview" id="foto-preview-container"></div>
+                </div>
+
+                <button type="submit">Cadastrar meu Brechó</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Script de dados e lógica de cadastro -->
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Domingo status toggle logic
+            const domingoStatus = document.getElementById('domingo-status');
+            const domingoHorariosContainer = document.getElementById('domingo-horarios-container');
+            
+            domingoStatus.addEventListener('change', () => {
+                if (domingoStatus.value === 'aberto') {
+                    domingoHorariosContainer.style.display = 'grid';
+                } else {
+                    domingoHorariosContainer.style.display = 'none';
+                }
+            });
+
+            // Image Preview and Resize logic
+            const fileInput = document.getElementById('foto-brecho');
+            const previewContainer = document.getElementById('foto-preview-container');
+            const uploadStatusText = document.getElementById('upload-status-text');
+            let base64ImageStr = ''; // Stores compressed base64 representation of image
+
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                uploadStatusText.textContent = "Selecionando...";
+                previewContainer.innerHTML = '';
+
+                // Render Preview and Resize
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const max_size = 600; // max width/height
+                        let width = img.width;
+                        let height = img.height;
+                        
+                        if (width > height) {
+                            if (width > max_size) {
+                                height *= max_size / width;
+                                width = max_size;
+                            }
+                        } else {
+                            if (height > max_size) {
+                                width *= max_size / height;
+                                height = max_size;
+                            }
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // Convert to dataurl with quality compression
+                        base64ImageStr = canvas.toDataURL('image/jpeg', 0.75);
+
+                        // Show preview
+                        const previewImg = document.createElement('img');
+                        previewImg.src = base64ImageStr;
+                        previewContainer.appendChild(previewImg);
+                        uploadStatusText.textContent = "Foto carregada com sucesso! ✓";
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // Form Submit logic
+            const form = document.getElementById('cadastro-brecho-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById('nome-brecho').value.trim();
+                const tipo = document.getElementById('tipo-estabelecimento').value;
+                const address = document.getElementById('endereco').value.trim() || 'Apenas online';
+                const style = document.getElementById('estilo-principal').value;
+                const management = document.getElementById('gestao').value;
+                // Gera uma distância aleatória realista entre 0.5km e 8.5km do usuário
+                const distanceVal = parseFloat((Math.random() * 8 + 0.5).toFixed(1));
+
+                // Format Hours
+                const segSexInicio = document.getElementById('seg-sex-inicio').value;
+                const segSexFim = document.getElementById('seg-sex-fim').value;
+                const sabInicio = document.getElementById('sab-inicio').value;
+                const sabFim = document.getElementById('sab-fim').value;
+                
+                let hoursStr = `Seg-Sex: ${segSexInicio}h-${segSexFim}h | Sáb: ${sabInicio}h-${sabFim}h`;
+                if (domingoStatus.value === 'aberto') {
+                    const domInicio = document.getElementById('dom-inicio').value;
+                    const domFim = document.getElementById('dom-fim').value;
+                    hoursStr += ` | Dom: ${domInicio}h-${domFim}h`;
+                }
+
+                // Format Contact Info
+                const rawTel = document.getElementById('telefone').value.trim();
+                const instagramUrl = document.getElementById('instagram').value.trim();
+                
+                let contactStr = `WhatsApp: ${rawTel}`;
+                if (instagramUrl) {
+                    try {
+                        let handle = instagramUrl;
+                        if (instagramUrl.includes('instagram.com/')) {
+                            // Extract handle
+                            const parts = instagramUrl.split('instagram.com/');
+                            if (parts[1]) {
+                                handle = '@' + parts[1].split('/')[0].split('?')[0];
+                            }
+                        }
+                        contactStr += ` | Instagram: ${handle}`;
+                    } catch (err) {
+                        contactStr += ` | Link: ${instagramUrl}`;
+                    }
+                }
+
+                // Fallback background image based on style if none uploaded
+                let finalBgImage = base64ImageStr;
+                if (!finalBgImage) {
+                    const styleImages = {
+                        vintage: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                        streetwear: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                        casual: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                        grife: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                        infantil: 'https://images.unsplash.com/photo-1519689680058-324335c77eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+                    };
+                    finalBgImage = styleImages[style] || styleImages.casual;
+                }
+
+                // Generate slug id
+                const slugId = name.toLowerCase()
+                                   .normalize("NFD")
+                                   .replace(/[\u0300-\u036f]/g, "")
+                                   .replace(/[^a-z0-9]+/g, '-')
+                                   .replace(/(^-|-$)+/g, '');
+
+                // Create new store object
+                const newStore = {
+                    id: slugId,
+                    name: name,
+                    rating: 5,
+                    reviewsCount: 0,
+                    reviewText: '"Brechó cadastrado recentemente. Seja o primeiro a avaliar!"',
+                    hours: hoursStr,
+                    address: address,
+                    contact: contactStr,
+                    distance: distanceVal,
+                    style: style,
+                    management: management,
+                    bgImage: finalBgImage,
+                    images: [finalBgImage],
+                    customClass: '',
+                    reviewsList: []
+                };
+
+                // Add to storesData and update localStorage
+                if (typeof storesData !== 'undefined') {
+                    // Check if already exists to prevent duplicate id
+                    const index = storesData.findIndex(s => s.id === slugId);
+                    if (index !== -1) {
+                        storesData[index] = newStore;
+                    } else {
+                        storesData.push(newStore);
+                    }
+                    localStorage.setItem('storesData', JSON.stringify(storesData));
+                }
+
+                // Success notification (Toast)
+                showToast('Parabéns! Seu brechó foi cadastrado e agora faz parte da nossa curadoria.');
+
+                // Redirect to search page after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'busca.html';
+                }, 2000);
+            });
+
+            // Helper to render Toast
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.className = 'toast-notification';
+                toast.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <span style="font-size:1.25rem;">✨</span>
+                        <span>${message}</span>
+                    </div>
+                `;
+
+                Object.assign(toast.style, {
+                    position: 'fixed',
+                    bottom: '24px',
+                    right: '24px',
+                    zIndex: '1000',
+                    backgroundColor: '#8C3D2B',
+                    color: '#FFFFFF',
+                    padding: '1rem 1.75rem',
+                    borderRadius: '50px',
+                    boxShadow: '0 10px 30px rgba(140, 61, 43, 0.2)',
+                    transform: 'translateY(100px)',
+                    opacity: '0',
+                    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                });
+
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.style.transform = 'translateY(0)';
+                    toast.style.opacity = '1';
+                }, 50);
+
+                setTimeout(() => {
+                    toast.style.transform = 'translateY(100px)';
+                    toast.style.opacity = '0';
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 400);
+                }, 3000);
+            }
+        });
+    </script>
+    <!-- Script de transição de páginas -->
+    <script src="transitions.js"></script>
+</body>
+</html>

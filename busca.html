@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Brechós - Loop</title>
+    <!-- Fonte Satoshi para um visual moderno e elegante -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <!-- Folha de estilos externa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo" id="logo-btn"><img src="assets/logo_white.png" alt="Loop" class="logo-img"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="busca.html" class="active">Busca</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="anuncie.html">Seu Brechó</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+
+        <!-- SEÇÃO DE BUSCA E FILTROS -->
+        <div class="search-filter-container">
+            <div class="search-box-row">
+                <div class="search-input-wrapper">
+                    <input type="text" class="search-input" placeholder="Digite o nome de um brechó ou o que você procura (ex: jaqueta jeans)...">
+                </div>
+                <button class="search-btn">Buscar</button>
+            </div>
+
+            <div class="filters-row">
+                <select class="filter-select">
+                    <option value="">Raio de distância</option>
+                    <option value="2km">Até 2 km</option>
+                    <option value="5km">Até 5 km</option>
+                    <option value="10km">Até 10 km</option>
+                    <option value="20km">Mais de 10 km</option>
+                </select>
+
+                <select class="filter-select">
+                    <option value="">Avaliação por Estrelas</option>
+                    <option value="5">5 estrelas (Excelentes)</option>
+                    <option value="4">4+ estrelas (Muito bons)</option>
+                    <option value="3">3+ estrelas (Regulares)</option>
+                </select>
+
+                <select class="filter-select">
+                    <option value="">Qtd. de Avaliações</option>
+                    <option value="poucas">Recentes (Até 15 avaliações)</option>
+                    <option value="medias">Populares (15 a 50 avaliações)</option>
+                    <option value="muitas">Muito avaliados (+50 avaliações)</option>
+                </select>
+
+                <select class="filter-select">
+                    <option value="">Estilos</option>
+                    <option value="vintage">Vintage / Retrô</option>
+                    <option value="streetwear">Streetwear</option>
+                    <option value="casual">Casual clássico</option>
+                    <option value="grife">Grifes / Premium</option>
+                    <option value="infantil">Infantil</option>
+                </select>
+
+                <select class="filter-select">
+                    <option value="">Tipo de Gestão</option>
+                    <option value="beneficente">Beneficentes (ONGs / Igrejas)</option>
+                    <option value="privado">Privados / Comerciais</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- LISTAGEM DE LOJAS FILTRADAS -->
+    <section class="stores-section">
+        <h2>Resultados da Busca</h2>
+        <div id="stores-list-container">
+            <!-- Os cards dos brechós serão gerados dinamicamente via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Script JavaScript contendo a lógica de busca e filtragem -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <!-- Script de transição de páginas -->
+    <script src="transitions.js"></script>
+</body>
+</html>

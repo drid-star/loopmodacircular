@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop - Login</title>
+    <!-- Fonte Satoshi para manter a consistência e elegância visual -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Satoshi', sans-serif;
+        }
+
+        body {
+            background-color: #EAE6DF; /* Fundo bege claro idêntico à imagem */
+            color: #6E3623; /* Tom marrom escuro padrão */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            
+            /* Animação de transição suave */
+            animation: pageFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.page-fade-out {
+            animation: none !important;
+            opacity: 0 !important;
+            transform: translateY(-8px) !important;
+        }
+
+        @keyframes pageFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- CONTAINER DO FORMULÁRIO --- */
+        .login-container {
+            width: 100%;
+            max-width: 620px; /* Largura proporcional ao layout da imagem */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- LOGOTIPO INTEGRADO (Réplica CSS de image_c3347d.png) --- */
+        .logo-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: flex-end;
+            margin-bottom: 25px;
+            padding-top: 30px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Folhinha flutuante acima do logotipo */
+        .logo-leaf {
+            position: absolute;
+            top: 0;
+            left: 51.5%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 42px;
+            background-color: #8C3D2B;
+            border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+            transform: translateX(-50%) rotate(-15deg);
+        }
+
+        .logo-text {
+            font-size: 150px;
+            font-weight: 900;
+            color: #8C3D2B;
+            line-height: 0.8;
+            letter-spacing: -6px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        /* Customização do caractere 'l' com a base estendida */
+        .logo-l {
+            font-weight: 700;
+            margin-right: -5px;
+            transform: scaleY(1.05);
+        }
+
+        /* Customização do 'oo' infinito interligado */
+        .logo-oo {
+            letter-spacing: -22px;
+            margin-right: 12px;
+            font-weight: 900;
+        }
+
+        .logo-p {
+            margin-left: -5px;
+        }
+
+        /* --- TEXTO DE SUBTÍTULO --- */
+        .login-title {
+            font-size: 38px;
+            font-weight: 500;
+            color: #6E3623;
+            line-height: 1.2;
+            margin-bottom: 45px;
+            max-width: 580px;
+        }
+
+        .login-title em {
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* --- FORMULÁRIO --- */
+        .login-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 28px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #8C3D2B;
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            background-color: #DDD9D2; /* Fundo cinza/bege escurecido dos inputs */
+            border: none;
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-size: 16px;
+            color: #6E3623;
+            outline: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .input-field::placeholder {
+            color: #A37566;
+            opacity: 0.6;
+        }
+
+        .input-field:focus {
+            background-color: #D3CECF; /* Corrigido de #D3CE text */
+            box-shadow: 0 0 0 2px #8C3D2B;
+        }
+
+        /* --- BOTÃO ENTRAR --- */
+        .submit-btn {
+            width: 100%;
+            background-color: #8C3D2B; /* Marrom avermelhado do botão */
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50px; /* Bordas arredondadas ovais como na imagem */
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #6E3623;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* --- LINK PARA CADASTRO --- */
+        .toggle-link {
+            margin-top: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #A37566;
+            text-align: center;
+            width: 100%;
+        }
+
+        .toggle-link a {
+            color: #8C3D2B;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+
+        .toggle-link a:hover {
+            color: #6E3623;
+        }
+
+        /* Responsive Overrides */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px 10px;
+            }
+            .login-container {
+                padding: 0;
+            }
+            .logo-text {
+                font-size: 90px;
+                letter-spacing: -4px;
+            }
+            .logo-leaf {
+                width: 20px;
+                height: 28px;
+                top: 5px;
+            }
+            .logo-oo {
+                letter-spacing: -14px;
+            }
+            .login-title {
+                font-size: 22px;
+                margin-bottom: 30px;
+            }
+            .input-group {
+                margin-bottom: 20px;
+            }
+            .input-field {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+            .submit-btn {
+                padding: 14px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        
+        <!-- LOGO (Clicável para retornar à Home) -->
+        <a href="index.html" class="logo-wrapper">
+            <div class="logo-leaf"></div>
+            <div class="logo-text">
+                <span class="logo-l">l</span>
+                <span class="logo-oo">oo</span>
+                <span class="logo-p">p</span>
+            </div>
+        </a>
+
+        <!-- TÍTULO DA PÁGINA -->
+        <h1 class="login-title">
+            Acesse sua conta e descubra <em>brechós</em>, <em>achados e lojas</em> perto de você.
+        </h1>
+
+        <!-- FORMULÁRIO DE LOGIN -->
+        <form class="login-form" action="index.html" method="POST">
+            
+            <!-- Campo Email -->
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="input-field" placeholder="jane@framer.com" required>
+            </div>
+
+            <!-- Campo Senha -->
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" class="input-field" placeholder="*****" required>
+            </div>
+
+            <!-- Botão Entrar -->
+            <button type="submit" class="submit-btn">Entrar</button>
+            
+            <!-- Link Alternativo -->
+            <div class="toggle-link">
+                Não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- Script de transição de páginas -->
+    <script src="transitions.js"></script>
+</body>
+</html>

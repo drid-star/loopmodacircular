@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Brechó - Loop</title>
+    <!-- Fonte Satoshi para manter a consistência e elegância visual -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <!-- Folha de estilos externa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo" id="logo-btn"><img src="assets/logo_white.png" alt="Loop" class="logo-img"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="busca.html">Busca</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="anuncie.html">Seu Brechó</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="details-container" id="details-view-container">
+        <!-- RENDERIZADO VIA JAVASCRIPT DINAMICAMENTE -->
+        <div style="text-align: center; width: 100%; padding: 40px; color: #6E3623;">
+            Carregando detalhes do brechó...
+        </div>
+    </main>
+
+    <!-- Script de dados e lógica de detalhes -->
+    <script src="data.js"></script>
+    <script src="script_detalhes.js"></script>
+    <!-- Script de transição de páginas -->
+    <script src="transitions.js"></script>
+</body>
+</html>

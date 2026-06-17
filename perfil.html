@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Loop</title>
+    <!-- Fonte Satoshi para manter a consistência e elegância visual -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <!-- Folha de estilos externa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo" id="logo-btn"><img src="assets/logo_white.png" alt="Loop" class="logo-img"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="busca.html">Busca</a></li>
+                <li><a href="perfil.html" class="active">Perfil</a></li>
+                <li><a href="anuncie.html">Seu Brechó</a></li>
+                <li><a href="cadastro.html">Cadastre-se</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <!-- BARRA LATERAL DO PERFIL -->
+        <aside class="profile-sidebar">
+            <div class="profile-card">
+                <div class="profile-avatar-wrapper">
+                    <img src="assets/user_profile.png" alt="Foto de Perfil de Larissa" class="profile-avatar-img">
+                </div>
+                <h2 class="profile-name">Larissa</h2>
+                <span class="profile-tag">Garimpadora Nível 3</span>
+                <p class="profile-bio">
+                    Apaixonada por moda circular, garimpos vintage e consumo consciente. Moradora de Santa Maria - RS.
+                </p>
+                <div class="profile-stats">
+                    <div class="stat-box">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Avaliações</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value">2</span>
+                        <span class="stat-label">Favoritos</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL DO PERFIL -->
+        <section class="profile-content">
+            <!-- SEÇÃO DE FAVORITOS -->
+            <div>
+                <h3 class="profile-section-title"><span>❤️</span> Brechós Favoritados</h3>
+                <div class="favorites-list">
+                    <!-- Favorito 1 -->
+                    <a href="detalhes.html?id=vo-adelaide" class="fav-card">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Brechó Vó Adelaide" class="fav-img">
+                        <div class="fav-info">
+                            <h4>Brechó Vó Adelaide</h4>
+                            <div class="rating">★★★★★</div>
+                            <span class="dist">📍 2.4 km de você</span>
+                        </div>
+                    </a>
+
+                    <!-- Favorito 2 -->
+                    <a href="detalhes.html?id=garagem-mix" class="fav-card">
+                        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Garagem Mix Brechó" class="fav-img">
+                        <div class="fav-info">
+                            <h4>Garagem Mix Brechó</h4>
+                            <div class="rating">★★★★☆</div>
+                            <span class="dist">📍 0.8 km de você</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- SEÇÃO DE AVALIAÇÕES -->
+            <div>
+                <h3 class="profile-section-title"><span>📝</span> Minhas Avaliações</h3>
+                <div class="my-reviews-list">
+                    <!-- Avaliação 1 -->
+                    <div class="my-review-card">
+                        <div class="my-review-header">
+                            <h4><a href="detalhes.html?id=vo-adelaide">Brechó Vó Adelaide</a></h4>
+                            <span class="date">Avaliado em 12/06/2026</span>
+                        </div>
+                        <div class="rating">★★★★★</div>
+                        <p class="my-review-text">
+                            "Excelente atendimento. Muitas coisas boas para garimpar. Consegui um vestido retrô maravilhoso por um preço ótimo!"
+                        </p>
+                    </div>
+
+                    <!-- Avaliação 2 -->
+                    <div class="my-review-card">
+                        <div class="my-review-header">
+                            <h4><a href="detalhes.html?id=garagem-mix">Garagem Mix Brechó</a></h4>
+                            <span class="date">Avaliado em 05/06/2026</span>
+                        </div>
+                        <div class="rating">★★★★☆</div>
+                        <p class="my-review-text">
+                            "Amo... Lugar limpo, organizado, ótimo atendimento. Já encontrei excelentes peças. Super recomendo!"
+                        </p>
+                    </div>
+
+                    <!-- Avaliação 3 -->
+                    <div class="my-review-card">
+                        <div class="my-review-header">
+                            <h4><a href="detalhes.html?id=retro-vibe">Retro Vibe Brechó</a></h4>
+                            <span class="date">Avaliado em 28/05/2026</span>
+                        </div>
+                        <div class="rating">★★★★★</div>
+                        <p class="my-review-text">
+                            "Adorei a seleção dos anos 80 e 90. A curadoria é de alto nível e as roupas estão impecavelmente higienizadas."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Script de dados e lógica do perfil -->
+    <script src="data.js"></script>
+    <script src="script_perfil.js"></script>
+    <!-- Script de transição de páginas -->
+    <script src="transitions.js"></script>
+</body>
+</html>
