@@ -12,9 +12,9 @@ const defaultStoresData = [
         distance: 0.8,
         style: 'streetwear',
         management: 'privado',
-        bgImage: 'garagem_mix.png',
+        bgImage: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
         images: [
-            'garagem_mix.png',
+            'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
             'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
             'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
         ],
@@ -37,9 +37,9 @@ const defaultStoresData = [
         distance: 2.4,
         style: 'vintage',
         management: 'privado',
-        bgImage: 'vo_adelaide.png',
+        bgImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
         images: [
-            'vo_adelaide.png',
+            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
             'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
             'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
         ],
@@ -246,7 +246,35 @@ const defaultStoresData = [
 
 // Inicializar do localStorage ou usar o padrão
 let storesData = JSON.parse(localStorage.getItem('storesData'));
-if (!storesData) {
+if (storesData) {
+    let needsUpdate = false;
+    storesData.forEach(store => {
+        if (store.bgImage === 'garagem_mix.png' || store.bgImage === 'assets/garagem_mix.png') {
+            store.bgImage = 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+            needsUpdate = true;
+        }
+        if (store.bgImage === 'vo_adelaide.png' || store.bgImage === 'assets/vo_adelaide.png') {
+            store.bgImage = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+            needsUpdate = true;
+        }
+        if (store.images) {
+            store.images = store.images.map(img => {
+                if (img === 'garagem_mix.png' || img === 'assets/garagem_mix.png') {
+                    needsUpdate = true;
+                    return 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+                }
+                if (img === 'vo_adelaide.png' || img === 'assets/vo_adelaide.png') {
+                    needsUpdate = true;
+                    return 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+                }
+                return img;
+            });
+        }
+    });
+    if (needsUpdate) {
+        localStorage.setItem('storesData', JSON.stringify(storesData));
+    }
+} else {
     storesData = defaultStoresData;
     localStorage.setItem('storesData', JSON.stringify(storesData));
 }
