@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop - Personalizar Perfil</title>
+    <!-- Fonte Satoshi para manter a consistência e elegância visual -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Satoshi', sans-serif;
+        }
+
+        body {
+            background-color: #EAE6DF; /* Fundo bege claro idêntico à imagem */
+            color: #6E3623; /* Tom marrom escuro padrão */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            
+            /* Animação de transição suave */
+            animation: pageFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.page-fade-out {
+            animation: none !important;
+            opacity: 0 !important;
+            transform: translateY(-8px) !important;
+        }
+
+        @keyframes pageFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- CONTAINER DO FORMULÁRIO --- */
+        .login-container {
+            width: 100%;
+            max-width: 620px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- LOGOTIPO INTEGRADO --- */
+        .logo-wrapper {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-img-auth {
+            max-height: 100px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* --- TEXTO DE SUBTÍTULO --- */
+        .login-title {
+            font-size: 34px;
+            font-weight: 500;
+            color: #6E3623;
+            line-height: 1.2;
+            margin-bottom: 35px;
+            max-width: 580px;
+        }
+
+        .login-title em {
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* --- FORMULÁRIO --- */
+        .login-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        /* Foto de Perfil Upload */
+        .avatar-upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .avatar-preview-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid #8C3D2B;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #DDD9D2;
+            box-shadow: 0 4px 15px rgba(110, 54, 35, 0.1);
+        }
+
+        .avatar-preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .upload-avatar-btn {
+            background-color: #DDD9D2;
+            color: #8C3D2B;
+            border: 1px solid rgba(140, 61, 43, 0.3);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .upload-avatar-btn:hover {
+            background-color: #8C3D2B;
+            color: #FFFFFF;
+        }
+
+        .file-hint-text {
+            font-size: 12px;
+            color: #A37566;
+            font-style: italic;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+            width: 100%;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #8C3D2B;
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            background-color: #DDD9D2;
+            border: none;
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-size: 16px;
+            color: #6E3623;
+            outline: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .input-field::placeholder {
+            color: #A37566;
+            opacity: 0.6;
+        }
+
+        .input-field:focus {
+            background-color: #D3CECF;
+            box-shadow: 0 0 0 2px #8C3D2B;
+        }
+
+        textarea.input-field {
+            font-family: 'Satoshi', sans-serif;
+            resize: vertical;
+        }
+
+        /* --- BOTÃO SALVAR --- */
+        .submit-btn {
+            width: 100%;
+            background-color: #8C3D2B;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            text-align: center;
+        }
+
+        .submit-btn:hover {
+            background-color: #6E3623;
+        }
+
+        /* Responsividade Mobile */
+        @media (max-width: 480px) {
+            .login-title {
+                font-size: 26px;
+                margin-bottom: 25px;
+            }
+            .avatar-preview-circle {
+                width: 110px;
+                height: 110px;
+            }
+            .input-field {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+            .submit-btn {
+                padding: 14px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        
+        <!-- LOGO (Retorna à Home se clicado) -->
+        <a href="index.html" class="logo-wrapper">
+            <img src="assets/logo-loop.png" alt="Loop Logo" class="logo-img-auth">
+        </a>
+
+        <!-- TÍTULO DA PÁGINA -->
+        <h1 class="login-title">
+            Personalize seu <em>perfil</em>
+        </h1>
+
+        <!-- FORMULÁRIO DE PERSONALIZAÇÃO -->
+        <form class="login-form" id="customize-form">
+            <!-- Upload Foto de Perfil -->
+            <div class="avatar-upload-container">
+                <div class="avatar-preview-circle">
+                    <img src="assets/user_profile.png" alt="Avatar Preview" id="avatar-preview" class="avatar-preview-img">
+                </div>
+                <label for="upload-avatar" class="upload-avatar-btn">Alterar Foto</label>
+                <input type="file" id="upload-avatar" accept="image/*" style="display: none;">
+                <span id="file-hint" class="file-hint-text">Nenhum arquivo selecionado</span>
+            </div>
+
+            <!-- Campo Nome -->
+            <div class="input-group">
+                <label for="user-name-input">Nome</label>
+                <input type="text" id="user-name-input" class="input-field" placeholder="Ex: Larissa" required>
+            </div>
+
+            <!-- Campo Bio -->
+            <div class="input-group">
+                <label for="user-bio-input">Biografia (Opcional)</label>
+                <textarea id="user-bio-input" class="input-field" rows="3" placeholder="Fale um pouco sobre você, seu estilo de garimpo..."></textarea>
+            </div>
+
+            <!-- Botão Salvar -->
+            <button type="submit" class="submit-btn">Salvar e Continuar</button>
+        </form>
+
+    </div>
+
+    <!-- Script de dados para migração se necessário -->
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar inputs com os valores padrões atuais
+            const avatarPreview = document.getElementById('avatar-preview');
+            const nameInput = document.getElementById('user-name-input');
+            const bioInput = document.getElementById('user-bio-input');
+            const uploadInput = document.getElementById('upload-avatar');
+            const fileHint = document.getElementById('file-hint');
+            const form = document.getElementById('customize-form');
+
+            const defaultName = 'Larissa';
+            const defaultBio = 'Apaixonada por moda circular, garimpos vintage e consumo consciente. Moradora de Santa Maria - RS.';
+            const defaultAvatar = 'assets/user_profile.png';
+
+            // Carrega dados se já existirem no localStorage
+            const savedName = localStorage.getItem('userName');
+            const savedBio = localStorage.getItem('userBio');
+            const savedAvatar = localStorage.getItem('userAvatar');
+
+            nameInput.value = savedName || defaultName;
+            bioInput.value = savedBio || defaultBio;
+            avatarPreview.src = savedAvatar || defaultAvatar;
+
+            let avatarBase64 = savedAvatar || defaultAvatar;
+
+            // Foto de perfil upload preview
+            uploadInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    fileHint.textContent = file.name;
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        avatarBase64 = event.target.result;
+                        avatarPreview.src = avatarBase64;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Função de migração de avaliações do nome padrão "Larissa" para o novo nome
+            function migrateReviews(oldName, newName) {
+                if (!oldName || !newName || oldName === newName) return;
+
+                let localStores = JSON.parse(localStorage.getItem('storesData'));
+                if (!localStores && typeof storesData !== 'undefined') {
+                    localStores = storesData;
+                }
+
+                if (localStores) {
+                    let updated = false;
+                    localStores.forEach(store => {
+                        store.reviewsList.forEach(r => {
+                            if (r.author === oldName) {
+                                r.author = newName;
+                                updated = true;
+                            }
+                        });
+                    });
+                    if (updated) {
+                        localStorage.setItem('storesData', JSON.stringify(localStores));
+                    }
+                }
+            }
+
+            // Submissão do formulário
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const oldName = savedName || defaultName;
+                const newName = nameInput.value.trim();
+                const newBio = bioInput.value.trim();
+
+                if (!newName) return;
+
+                // Salvar dados no localStorage
+                localStorage.setItem('userName', newName);
+                localStorage.setItem('userBio', newBio);
+                localStorage.setItem('userAvatar', avatarBase64);
+
+                // Migrar avaliações antigas do usuário padrão
+                migrateReviews(oldName, newName);
+
+                // Executar transição de saída e ir para Home (index.html)
+                document.body.classList.add('page-fade-out');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 200);
+            });
+        });
+    </script>
+    <!-- Script de transição de páginas -->
+    <script src="transitions.js"></script>
+</body>
+</html>

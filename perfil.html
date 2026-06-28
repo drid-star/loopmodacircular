@@ -30,11 +30,11 @@
         <aside class="profile-sidebar">
             <div class="profile-card">
                 <div class="profile-avatar-wrapper">
-                    <img src="assets/user_profile.png" alt="Foto de Perfil de Larissa" class="profile-avatar-img">
+                    <img src="assets/user_profile.png" alt="Foto de Perfil" class="profile-avatar-img" id="profile-avatar">
                 </div>
-                <h2 class="profile-name">Larissa</h2>
+                <h2 class="profile-name" id="profile-name">Larissa</h2>
                 <span class="profile-tag">Garimpadora Nível 3</span>
-                <p class="profile-bio">
+                <p class="profile-bio" id="profile-bio">
                     Apaixonada por moda circular, garimpos vintage e consumo consciente. Moradora de Santa Maria - RS.
                 </p>
                 <div class="profile-stats">
@@ -47,6 +47,9 @@
                         <span class="stat-label">Favoritos</span>
                     </div>
                 </div>
+                <button class="edit-profile-btn" id="edit-profile-btn">
+                    <span>✏️</span> Editar Perfil
+                </button>
             </div>
         </aside>
 
@@ -121,6 +124,38 @@
             </div>
         </section>
     </main>
+    <!-- MODAL DE EDIÇÃO DE PERFIL -->
+    <div class="modal-overlay" id="edit-profile-modal">
+        <div class="modal-card">
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+            <h3>Editar Perfil</h3>
+            <form id="edit-profile-form">
+                <!-- Foto de Perfil Preview & Upload -->
+                <div class="avatar-upload-group">
+                    <div class="avatar-preview-wrapper">
+                        <img src="assets/user_profile.png" alt="Avatar Preview" id="avatar-preview" class="avatar-preview-img">
+                    </div>
+                    <label for="upload-avatar-input" class="upload-avatar-label">Alterar Foto</label>
+                    <input type="file" id="upload-avatar-input" accept="image/*" style="display: none;">
+                    <span id="file-name-hint" class="file-name-hint">Nenhum arquivo selecionado</span>
+                </div>
+
+                <!-- Nome -->
+                <div class="form-group-details">
+                    <label for="edit-name-input">Nome</label>
+                    <input type="text" id="edit-name-input" required placeholder="Ex: Larissa">
+                </div>
+
+                <!-- Bio -->
+                <div class="form-group-details">
+                    <label for="edit-bio-input">Biografia</label>
+                    <textarea id="edit-bio-input" rows="3" placeholder="Fale um pouco sobre você..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn-details" style="margin-top: 15px; width: 100%;">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Script de dados e lógica do perfil -->
     <script src="data.js"></script>

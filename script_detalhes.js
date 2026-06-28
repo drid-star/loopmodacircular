@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="form-row-2">
                             <div class="form-group-details">
                                 <label for="reviewer-name">Seu Nome</label>
-                                <input type="text" id="reviewer-name" placeholder="Ex: Larissa" required>
+                                <input type="text" id="reviewer-name" placeholder="Ex: Larissa" value="${localStorage.getItem('userName') || ''}" required>
                             </div>
                             <div class="form-group-details">
                                 <label for="reviewer-rating">Sua Nota</label>

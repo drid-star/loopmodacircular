@@ -1,6 +1,6 @@
 # Loop - Localizador de Brechós (Multitelas)
 
-Este é um projeto web completo, interativo e responsivo composto por cinco páginas principais. A interface foi construída utilizando a tipografia premium **Satoshi** (importada via CDN do Fontshare), estilos compartilhados integrados em uma folha de estilos externa (`style.css`), imagens reais, foto de perfil gerada por IA, logotipo estilizado em CSS Puro e interações avançadas controladas por JavaScript (`script.js`).
+Este é um projeto web completo, interativo e responsivo composto por nove páginas principais. A interface foi construída utilizando a tipografia premium **Satoshi** (importada via CDN do Fontshare), estilos compartilhados integrados em uma folha de estilos externa (`style.css`), imagens reais, foto de perfil gerada por IA, logotipo oficial (`logo-loop.png`) e interações avançadas controladas por JavaScript.
 
 ---
 
@@ -16,22 +16,39 @@ Este é um projeto web completo, interativo e responsivo composto por cinco pág
   * O buscador principal (barra de busca por texto).
   * 5 seletores de filtragem avançada (Distância, Estrelas, Qtd. de Avaliações, Estilos e Gestão).
   * Área de renderização dinâmica dos resultados de brechós com distâncias de você.
-* 📄 **[perfil.html](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/perfil.html)** - Nova página de Perfil contendo:
+* 📄 **[perfil.html](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/perfil.html)** - Página de Perfil contendo:
   * Navbar com a aba "Perfil" ativa.
-  * Cartão lateral com foto de perfil real (gerada por IA), nome completo ("Larissa"), tag de nível de usuário, biografia e estatísticas de uso.
-  * Seção de Brechós Favoritados com links diretos de acesso.
+  * Cartão lateral com foto de perfil e nome de usuário personalizáveis. Inclui o botão "Editar Perfil" que abre um modal para upload de nova foto e alteração de nome e biografia.
+  * Sincronização automática das avaliações antigas com o novo nome escolhido na edição.
+  * Seção de Brechós Favoritados com links diretos de acesso e remoção/favoritar sincronizada.
   * Seção contendo a listagem das avaliações deixadas pela usuária em brechós locais.
+* 📄 **[detalhes.html](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/detalhes.html)** - Página de detalhes dinâmica de cada brechó contendo:
+  * Informações de horário de funcionamento, contato e localização.
+  * Slideshow de fotos realistas dos brechós.
+  * Campo de avaliações da comunidade e adição de nova avaliação funcional.
+  * Opção de favoritar e desfavoritar com sincronização global.
+* 📄 **[anuncie.html](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/anuncie.html)** - Página de cadastro de novos brechós contendo:
+  * Formulário completo com perguntas dos filtros (Estilo, Gestão) e carregamento de foto.
+  * Fonte Satoshi em caixa normal (primeira maiúscula) e sincronização com o banco de dados.
 * 📄 **[login.html](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/login.html)** - Página de Login contendo:
-  * Logotipo "Loop" desenhado e estilizado puramente via CSS.
+  * Logotipo oficial `logo-loop.png` no formulário.
   * Subtítulo e formulário de acesso estruturado (Email, Senha, Botão de Acesso).
   * Link de atalho inferior para direcionar novos usuários para o `cadastro.html`.
 * 📄 **[cadastro.html](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/cadastro.html)** - Página de Cadastro contendo:
-  * Mesma identidade visual, cores e logotipo de login.html.
+  * Mesma identidade visual, cores e logotipo oficial de login.html.
   * Campos estruturados (Nome completo, Email, Senha).
   * Link de atalho inferior direcionando usuários existentes para o `login.html`.
+* 📄 **[personalizar.html](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/personalizar.html)** - Página de personalização de perfil pós-login:
+  * Exibida imediatamente após o login bem-sucedido.
+  * Permite ao usuário escolher e configurar seu Nome, Biografia e carregar sua Foto de perfil.
+  * Ao prosseguir, migra as avaliações padrão do banco de dados e redireciona de forma fluida para a Home.
+* 📄 **[404.html](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/404.html)** - Página de erro 404 estilizada contendo:
+  * Recurso visual animado com o asset `Ativo 10.png` flutuante.
+  * Botão de voltar para a Home com transições fluidas.
 * 🎨 **[style.css](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/style.css)** - Arquivo contendo todos os estilos unificados do projeto, incluindo as fontes, cores terrosas/bege, espaçamentos, hovers, cards de brechós, visual do perfil e regras responsivas.
-* ⚡ **[script.js](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/script.js)** - Controla a lógica de banco de dados local (com 7 brechós no total) e o filtro combinado instantâneo no `busca.html`.
-* 📁 **`assets/`** - Pasta com os logos da marca, fachadas físicas dos brechós e foto de perfil.
+* ⚡ **[script.js](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/script.js)** - Controla a renderização dinâmica e filtros combinados na busca.
+* ⚡ **[data.js](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/data.js)** - Banco de dados local compartilhado e persistido.
+* 📁 **`assets/`** - Pasta com os logos da marca, fachadas físicas dos brechós, asset Ativo 10 e foto de perfil.
 
 ---
 

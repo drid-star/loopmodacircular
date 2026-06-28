@@ -56,56 +56,20 @@
             align-items: center;
         }
 
-        /* --- LOGOTIPO INTEGRADO (Réplica CSS de image_c3347d.png) --- */
+        /* --- LOGOTIPO INTEGRADO --- */
         .logo-wrapper {
-            position: relative;
             display: inline-flex;
-            align-items: flex-end;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 25px;
-            padding-top: 30px;
             text-decoration: none;
             cursor: pointer;
         }
 
-        /* Folhinha flutuante acima do logotipo */
-        .logo-leaf {
-            position: absolute;
-            top: 0;
-            left: 51.5%;
-            transform: translateX(-50%);
-            width: 32px;
-            height: 42px;
-            background-color: #8C3D2B;
-            border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
-            transform: translateX(-50%) rotate(-15deg);
-        }
-
-        .logo-text {
-            font-size: 150px;
-            font-weight: 900;
-            color: #8C3D2B;
-            line-height: 0.8;
-            letter-spacing: -6px;
-            display: flex;
-            align-items: flex-end;
-        }
-
-        /* Customização do caractere 'l' com a base estendida */
-        .logo-l {
-            font-weight: 700;
-            margin-right: -5px;
-            transform: scaleY(1.05);
-        }
-
-        /* Customização do 'oo' infinito interligado */
-        .logo-oo {
-            letter-spacing: -22px;
-            margin-right: 12px;
-            font-weight: 900;
-        }
-
-        .logo-p {
-            margin-left: -5px;
+        .logo-img-auth {
+            max-height: 120px;
+            width: auto;
+            object-fit: contain;
         }
 
         /* --- TEXTO DE SUBTÍTULO --- */
@@ -217,17 +181,8 @@
             .login-container {
                 padding: 0;
             }
-            .logo-text {
-                font-size: 90px;
-                letter-spacing: -4px;
-            }
-            .logo-leaf {
-                width: 20px;
-                height: 28px;
-                top: 5px;
-            }
-            .logo-oo {
-                letter-spacing: -14px;
+            .logo-img-auth {
+                max-height: 90px;
             }
             .login-title {
                 font-size: 22px;
@@ -253,12 +208,7 @@
         
         <!-- LOGO (Clicável para retornar à Home) -->
         <a href="index.html" class="logo-wrapper">
-            <div class="logo-leaf"></div>
-            <div class="logo-text">
-                <span class="logo-l">l</span>
-                <span class="logo-oo">oo</span>
-                <span class="logo-p">p</span>
-            </div>
+            <img src="assets/logo-loop.png" alt="Loop Logo" class="logo-img-auth">
         </a>
 
         <!-- TÍTULO DA PÁGINA -->
@@ -267,7 +217,7 @@
         </h1>
 
         <!-- FORMULÁRIO DE LOGIN -->
-        <form class="login-form" action="index.html" method="POST">
+        <form class="login-form" action="personalizar.html" id="login-form" method="POST">
             
             <!-- Campo Email -->
             <div class="input-group">
@@ -292,6 +242,15 @@
 
     </div>
 
+    <script>
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.body.classList.add('page-fade-out');
+            setTimeout(() => {
+                window.location.href = 'personalizar.html';
+            }, 200);
+        });
+    </script>
     <!-- Script de transição de páginas -->
     <script src="transitions.js"></script>
 </body>
