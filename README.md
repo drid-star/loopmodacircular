@@ -48,7 +48,7 @@ Este é um projeto web completo, interativo e responsivo composto por nove pági
 * 🎨 **[style.css](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/style.css)** - Arquivo contendo todos os estilos unificados do projeto, incluindo as fontes, cores terrosas/bege, espaçamentos, hovers, cards de brechós, visual do perfil e regras responsivas.
 * ⚡ **[script.js](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/script.js)** - Controla a renderização dinâmica e filtros combinados na busca.
 * ⚡ **[data.js](file:///C:/Users/Larissa/.gemini/antigravity/scratch/web-interface-template/data.js)** - Banco de dados local compartilhado e persistido.
-* 📁 **`assets/`** - Pasta com os logos da marca, fachadas físicas dos brechós, asset Ativo 10 e foto de perfil.
+* 🖼️ **Imagens no diretório raiz** - Os logos da marca, fachadas físicas dos brechós, asset Ativo 10 e foto de perfil estão localizados diretamente na raiz do projeto.
 
 ---
 

@@ -12,9 +12,9 @@ const defaultStoresData = [
         distance: 0.8,
         style: 'streetwear',
         management: 'privado',
-        bgImage: 'assets/garagem_mix.png',
+        bgImage: 'garagem_mix.png',
         images: [
-            'assets/garagem_mix.png',
+            'garagem_mix.png',
             'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
             'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
         ],
@@ -37,9 +37,9 @@ const defaultStoresData = [
         distance: 2.4,
         style: 'vintage',
         management: 'privado',
-        bgImage: 'assets/vo_adelaide.png',
+        bgImage: 'vo_adelaide.png',
         images: [
-            'assets/vo_adelaide.png',
+            'vo_adelaide.png',
             'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
             'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
         ],

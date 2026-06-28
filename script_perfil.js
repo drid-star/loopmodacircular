@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Carregar perfil do localStorage ou definir padrões
     let currentName = localStorage.getItem('userName') || 'Larissa';
     let currentBio = localStorage.getItem('userBio') || 'Apaixonada por moda circular, garimpos vintage e consumo consciente. Moradora de Santa Maria - RS.';
-    let currentAvatar = localStorage.getItem('userAvatar') || 'assets/user_profile.png';
+    let currentAvatar = localStorage.getItem('userAvatar') || 'user_profile.png';
 
     // Referências do DOM do Perfil
     const profileAvatar = document.getElementById('profile-avatar');
